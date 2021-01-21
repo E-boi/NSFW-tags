@@ -1,5 +1,7 @@
 # NSFW-tags
 Adds a little tag next to NSFW channels
+
+If you want to blur images/vidoes in NSFW channels check out this plugin https://github.com/E-boi/Powercord-BlurNSFW
 ##
 example:
 
