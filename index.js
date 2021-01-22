@@ -13,7 +13,11 @@ module.exports = class NSFWtags extends Plugin {
     const _this = this
     const AnalyticsContext = await getModuleByDisplayName('AnalyticsContext')
     inject("NSFWtags", AnalyticsContext.prototype, 'renderProvider', function (_, res) {
-      if (this.props.page !== 'Guild Channel') return res;
+      if (this.props.page !== 'Guild Channel') {
+        oldGuildId = undefined
+        return res;
+      }
+      console.log(oldGuildId)
       if (_this.currentGuild.getGuildId() !== oldGuildId) {
         oldGuildId = _this.currentGuild.getGuildId();
         _this.injectTag();
@@ -31,6 +35,7 @@ module.exports = class NSFWtags extends Plugin {
     if (e.length === 0) return;
     e.forEach(c => {
       const element = document.querySelector(`[aria-label="${c.channel.name} (text channel)"]`) || document.querySelector(`[aria-label="unread, ${c.channel.name} (text channel)"]`);
+      if (element.parentElement.children[1].innerHTML.includes(`<div class="nsfw-badge"><div class="nsfw-text">NSFW</div></div>`)) return;
       element.parentElement.children[1].innerHTML += `<div class="nsfw-badge"><div class="nsfw-text">NSFW</div></div>`; //Adds the NSFW tag
     });
   }
