@@ -17,7 +17,6 @@ module.exports = class NSFWtags extends Plugin {
         oldGuildId = undefined
         return res;
       }
-      console.log(oldGuildId)
       if (_this.currentGuild.getGuildId() !== oldGuildId) {
         oldGuildId = _this.currentGuild.getGuildId();
         _this.injectTag();
