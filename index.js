@@ -26,6 +26,7 @@ module.exports = class NSFWtags extends Plugin {
   }
   pluginWillUnload() {
     uninject("NSFWtags");
+    document.querySelectorAll('.nsfw-badge').forEach(e => e.remove())
   }
   async injectTag() {
     await waitFor('[aria-label="Channels"]') //waiting for the channel list to load
