@@ -1,7 +1,7 @@
 {
-  "name": "NSFW tags",
-  "version": "1.0.1",
-  "description": "Adds a little NSFW tag next to a NSFW channel.",
-  "author": "ugly-patootie#0611",
-  "license": "MIT"
+	"name": "NSFW tags",
+	"version": "1.0.2",
+	"description": "Adds a little NSFW tag next to a NSFW channel.",
+	"author": "ugly-patootie#0611",
+	"license": "MIT"
 }
