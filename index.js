@@ -7,11 +7,10 @@ module.exports = class NSFWtags extends Plugin {
 		this.loadStylesheet('style.css');
 		const ChannelItem = getModule(m => m.default && m.default.displayName == 'ChannelItem', false);
 
-		inject('NSFWtags', ChannelItem, 'default', (_, props) => {
+		inject('NSFWtags', ChannelItem, 'default', ([{ channel }], props) => {
 			const children = props.props.children.props.children[1].props.children[1].props.children;
-			const channel = children[1].props.channel;
 			if (!channel.nsfw) return props;
-			children.unshift(React.createElement('div', { className: 'nsfw-badge' }, React.createElement('div', { className: 'nsfw-text' }, 'NSFW')));
+			children.push(React.createElement('div', { className: 'nsfw-badge' }, React.createElement('div', { className: 'nsfw-text' }, 'NSFW')));
 			return props;
 		});
 		ChannelItem.default.displayName = 'ChannelItem';
